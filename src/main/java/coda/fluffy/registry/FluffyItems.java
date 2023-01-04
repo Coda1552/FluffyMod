@@ -19,5 +19,6 @@ public class FluffyItems {
     };
 
     public static final RegistryObject<Item> FLUFFY_SPAWN_EGG = ITEMS.register("fluffy_spawn_egg", () -> new ForgeSpawnEggItem(FluffyEntities.FLUFFY, 0xf4d8ac, 0xaa8d6a, new Item.Properties().tab(GROUP)));
+    public static final RegistryObject<Item> FLUFF_FLUFF = ITEMS.register("fluffy_fluff", () -> new Item(new Item.Properties().tab(GROUP)));
 
 }
