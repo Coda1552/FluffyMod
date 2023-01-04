@@ -67,24 +67,35 @@ public class FluffyModel<T extends TamableAnimal> extends EntityModel<T> {
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		limbSwingAmount = Mth.clamp(limbSwingAmount, -0.35F, 0.35F);
 
-		if (entity.isOrderedToSit()) {
-			this.head.zRot = Mth.sin(-1.0F + limbSwing * 0.35F) * limbSwingAmount * 0.5F;
-			this.head.xRot = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.15F;
-			this.head.y = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.15F - 1.5F;
+		this.head.xRot += headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
+		this.tail.yRot = Mth.sin(-1.0F + ageInTicks * 0.35F) * 0.35F * 0.5F;
+		this.tail2.yRot = Mth.sin(-1.0F + ageInTicks * 0.35F) * 0.35F * 0.5F;
 
-			this.body.xRot = 4.15F;
+		if (entity.isInSittingPose()) {
+			this.head.zRot = 0.0F;
+			this.head.xRot = 0.0F;
+			this.head.y = -1.5F;
+
 			this.body.zRot = 0.0F;
+			this.body.y = 22.5F;
 
-			this.tail.yRot = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.5F;
-			this.tail2.yRot = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.5F;
+			this.tail.xRot = 0.5F;
+			this.tail2.xRot = 0.85F;
 
-			this.leftEar.y = Mth.sin(-2.0F + limbSwing * 0.7F) * limbSwingAmount * 0.8F - 0.5F;
-			this.rightEar.y = Mth.sin(-2.0F + limbSwing * 0.7F) * limbSwingAmount * 0.8F - 0.5F;
+			this.leftEar.y = -0.5F;
+			this.rightEar.y = -0.5F;
 
-			this.backRightLeg.xRot = 0.0F;
-			this.backLeftLeg.xRot = 0.0F;
-			this.rightLeg.xRot = 0.0F;
-			this.leftLeg.xRot = 0.0F;
+			this.backRightLeg.xRot = -1.5708F;
+			this.backLeftLeg.xRot = -1.5708F;
+			this.rightLeg.xRot = -1.5708F;
+			this.leftLeg.xRot = -1.5708F;
+
+			this.backRightLeg.yRot = 1.35F;
+			this.backLeftLeg.yRot = -1.35F;
+			this.rightLeg.yRot = 1.0F;
+			this.leftLeg.yRot = -1.0F;
+
 		}
 		else {
 
@@ -92,11 +103,11 @@ public class FluffyModel<T extends TamableAnimal> extends EntityModel<T> {
 			this.head.xRot = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.15F;
 			this.head.y = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.15F - 1.5F;
 
-			this.body.xRot = 0.0F;
 			this.body.zRot = Mth.sin(limbSwing * 0.7F) * limbSwingAmount * 0.15F;
+			this.body.y = 20.0F;
 
-			this.tail.yRot = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.5F;
-			this.tail2.yRot = Mth.sin(-1.0F + limbSwing * 0.7F) * limbSwingAmount * 0.5F;
+			this.tail.xRot = 0.6109F;
+			this.tail2.xRot = 0.3927F;
 
 			this.leftEar.y = Mth.sin(-2.0F + limbSwing * 0.7F) * limbSwingAmount * 0.8F - 0.5F;
 			this.rightEar.y = Mth.sin(-2.0F + limbSwing * 0.7F) * limbSwingAmount * 0.8F - 0.5F;
@@ -105,6 +116,11 @@ public class FluffyModel<T extends TamableAnimal> extends EntityModel<T> {
 			this.backLeftLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 			this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 			this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+
+			this.backRightLeg.yRot = 0.0F;
+			this.backLeftLeg.yRot = 0.0F;
+			this.rightLeg.yRot = 0.0F;
+			this.leftLeg.yRot = 0.0F;
 		}
 	}
 
