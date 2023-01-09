@@ -51,7 +51,7 @@ public class FluffyMod {
 	@SubscribeEvent
 	public static void onBiomeLoad(BiomeLoadingEvent event) {
     	if (event.getCategory().equals(Biome.BiomeCategory.PLAINS)) {
-    		event.getSpawns().addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(FluffyEntities.FLUFFY.get(), 4, 1, 1));
+    		event.getSpawns().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(FluffyEntities.FLUFFY.get(), 1, 1, 1));
     	}
 	}
 
